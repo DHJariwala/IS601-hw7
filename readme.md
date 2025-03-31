@@ -1,5 +1,7 @@
 # Docker and Python
 
+**This is Homework 7 for IS601 course. This is cloned repository from Professor's Repository.**
+
 For this assignment you will be combining Docker with Python to create a program that generates a QR code PNG file that
 contains a URL. The QR code can be viewed with the camera on your phone to allow a user to click on it and send them to
 the target website. You must make your program generate a QR code that takes someone to your GitHub homepage i.e. https://github.com/kaw393939 <replace mine with yours>
@@ -10,12 +12,38 @@ the target website. You must make your program generate a QR code that takes som
 
 ## Submission Requirements:
 
-1. Add the QR code image that links to your own GitHub homepage that you generate to the readme.md file, so that it appears below.
+1. ✅ Add the QR code image that links to your own GitHub homepage that you generate to the readme.md file, so that it appears below.
 
-PUT YOUR QR CODE IMAGE
+![Dev Jariwala QR Image (https://github.com/DHJariwala)](qr_codes/QRCode_20250331202951.png)
 
-2.  Add an image of viewing the log of successfully creating the QR code below.
- PUT YOUR LOG IMAGE HERE
+2. ✅ Add an image of viewing the log of successfully creating the QR code below.
+ 
+ 
+ Logs in local terminal
+ ![Local Terminal logs](log_image/terminal_log.png)
+
+Docker Desktop terminal
+![Docker Desktop Terminal logs](log_image/docker_terminal.png)
+
+## My process
+
+Run the following command to generate qr code for specific hyperlink (in this case, my own github profile).
+
+```sh
+docker run -d --name qr-generator \
+  -e QR_CODE_DIR='qr_codes' \
+  -e FILL_COLOR='black' \
+  -e BACK_COLOR='white' \
+  -v ./qr_codes:/app/qr_codes \
+  my-qr-app --url https://github.com/DHJariwala
+```
+
+To remove container
+
+```sh
+docker rm -f qr-generator
+```
+
 ## Lesson Video
 
 1.  [Scaling and Backend Software Engineering](https://youtu.be/v3LxCmYQVS4)
